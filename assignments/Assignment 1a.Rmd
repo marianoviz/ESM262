@@ -1,0 +1,15 @@
+---
+title: "Assignment 1a"
+author: "Mariano Viz"
+date: "09/02/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+• I'm taking the course to learn more about programming and improve my R skills. In the future, I would like to apply this to wildlife populations modeling.
+
+• My data science background is limited to having taken ESM 206 in the last quarter; and I'm currently taking ESM 244 (Advanced Data Science).
+
