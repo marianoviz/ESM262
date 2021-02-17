@@ -1,0 +1,26 @@
+---
+title: "Net Present Value of Carbon Sequestered in Protected Forest"
+author: "Mariano Viz, Teague Tran, Emiliano Espinoza "
+date: "16/02/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+
+## Contract
+
+**Input:** NEP (net ecosystem production, gC/m2/yr), Area of protected forest (m2), price of carbon ($/gC), total years from (years), Discount Rate (%).
+
+**Modules:**
+- Computer Total Annual Carbon Sequestered 
+- Compute Present Value
+- Compute Current Value
+
+**Output:** Net present value of carbon sequestered ($)
+
+**Flow Control Diagram:**
+https://app.diagrams.net/#G14h8QIVXp2fPaaQ9UD-MqqmTBx-Pw5A-n
+
