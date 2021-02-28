@@ -1,0 +1,86 @@
+---
+title: "262 Assignment 3"
+author: "Mariano Viz"
+date: "28/02/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+
+library(tidyverse)
+```
+
+
+
+```{r}
+#Example use of case_when function: predominant_diatom()
+
+#source predominant_diatom function:
+source("R/predominant_diatom.R")
+
+#generate a normal distribution sample of phosphate concentration (p_conc), silicate concentration (si_conc), and lake temperature (temp):
+p_conc <- rnorm(mean = 0.2, sd = 0.06, n = 100)
+si_conc <- rnorm(mean = 1.9, sd = 0.5, n = 100)
+temp <- rnorm(mean = 15, sd = 4, n = 100)
+
+#create a dataframe with a column for the predominant_diatom function results:
+diatom_df <- data.frame(p_conc = p_conc, si_conc = si_conc, temp = temp, predominant_diatom = NA)
+
+
+#run the function on the dataset:
+diatom_df$predominant_diatom <- predominant_diatom(diatom_df$p_conc, diatom_df$si_conc, diatom_df$temp)
+
+
+#plot results:
+ggplot(data = diatom_df, aes(x = si_conc, y = p_conc)) +
+  geom_point(aes(color = predominant_diatom))+
+  #added horizontal and vertical lines with the limiting nutrients for each species of diatom
+  geom_hline(yintercept = 0.01, color = "orange1") + #minimum amount of phosphate needed for Asterionella
+  geom_vline(xintercept = 1.9, color = "orange1") + #minimum amount of silicate needed for Asterionella
+  geom_hline(yintercept = 0.2, color = "palegreen3") + #minimum amount of phosphate needed for Cyclotella
+  geom_vline(xintercept = 0.6, color = "palegreen3") #minimum amount of silicate needed for Cyclotella  
+
+#plot looks consistent with the purpose of the function!
+
+
+
+
+```
+
+```{r}
+#Example use of while loop function: double_deposit()
+
+#source double_deposit function:
+source("R/double_deposit.R")
+
+#generate a uniform distribution sample of interest rates:
+annual_int <- runif(min = 0.02, max = 0.25, n = 500)
+
+
+#create a dataframe with a column for the double_deposit function results:
+double_dep_df <- data.frame(amount = 100, annual_int = annual_int, double_time = NA)
+
+#create a for loop to populate col double_dep_df$double_time:
+for(i in 1:nrow(double_dep_df)) {
+   double_dep_df$double_time[i] = double_deposit(double_dep_df$amount[i], double_dep_df$annual_int[i])
+}
+
+#plot results:
+ggplot(data = double_dep_df, aes(x = double_time, y =  annual_int)) +
+  geom_line() +
+  theme_minimal() +
+  labs(x = "double initial capital (years)",
+       y = "interest rate")
+
+#plot shows that as the interest rate increases, the years it takes to double the initial capital decrease dramatically
+
+
+```
+
+
+
+
+
+
+
