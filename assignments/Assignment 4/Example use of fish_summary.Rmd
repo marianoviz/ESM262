@@ -1,0 +1,36 @@
+---
+title: "Assignment 4"
+author: "Claudia Flores & Mariano Viz"
+date: "3/1/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+
+```{r}
+#Example use of fish_summary function
+
+#source fish_summary
+source("R/fish_summary.R")
+
+
+## Read in file 'fish.txt' data
+fish_data <- read.delim("fish.txt")
+
+## Change fish_data data frame into a vector
+fish_data <- as.vector(fish_data$x)
+
+## Run fish_summary() function with 'fish.txt' file
+fish_summary(fish_data)
+
+
+fish_summary(fish_data, graph = TRUE)
+
+
+```
+
+
